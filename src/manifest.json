@@ -1,0 +1,21 @@
+{
+    "short_name": "Roomy",
+    "name": "Roomy",
+    "background_color":"",
+    "theme_color": "",
+    "start_url": "./src/app.html",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+
+}
