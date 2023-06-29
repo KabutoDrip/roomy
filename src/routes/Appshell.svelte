@@ -1,12 +1,15 @@
 <script>
 	import { page } from '$app/stores';
-	//import {userStore} from "../js/stores.mjs"
+	import { userStore } from "../js/stores.mjs"
 	import {getUserProfile} from "../js/supabaseClient.mjs"
-	//const userId = userStore.userId.userId;
+	let profile = {};
+	//const userId = $userStore.user.id;
 
-	async function init(){
-		const profile = await getUserProfile(userId)
-	}
+	//async function init(){
+	//	profile = await getUserProfile(userId)
+	//	console.log(profile);
+	//}
+	//init()
 </script>
 
 <header>

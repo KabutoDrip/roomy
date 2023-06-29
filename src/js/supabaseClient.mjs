@@ -46,10 +46,9 @@ export async function getUserProfile(userId) {
 
 let { data: profiles, error } = await supabase
 .from('profiles')
-.select("*")
-
+.update(profile)
 .eq('id', userId) //filter
-
+.select();
 return profiles;
 
 
