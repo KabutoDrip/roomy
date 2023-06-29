@@ -42,3 +42,15 @@ export async function logout() {
     if(!error)userStore.set({isLoggedIn: false, user: null});
 
 }
+export async function getUserProfile(userId) {
+
+let { data: profiles, error } = await supabase
+.from('profiles')
+.select("*")
+
+.eq('id', userId) //filter
+
+return profiles;
+
+
+}
