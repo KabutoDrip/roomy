@@ -36,3 +36,9 @@ export async function checkLogin() {
         userStore.set({isLoggedIn: false, user: null})
     }
 }
+
+export async function logout() {
+    let {error} = await supabase.auth.signOut();
+    if(!error)userStore.set({isLoggedIn: false, user: null});
+
+}
