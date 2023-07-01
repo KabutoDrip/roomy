@@ -1,6 +1,7 @@
 <script>
 	import MediaQuery from '../globalComponents/MediaQuery.svelte'
 	import Reservation from './Reservation.svelte'
+	import Calendar from './Calendar.svelte';
 </script>
 <svelte:head>
 	<title>Calender</title>
@@ -12,16 +13,14 @@
 <body>
 	<MediaQuery query='(max-width: 1024px)' let:matches>
 		{#if matches}
-			<div class="calendar">
-				<h1>Calender</h1>
-			</div>
+			<Calendar />
+			
 		{/if}
 	</MediaQuery>
 	<MediaQuery query='(min-width: 1025px)' let:matches>
 		{#if matches}
-			<div class="calendar">
-				<h1>Calender</h1>
-			</div>
+			<Calendar />
+
 			<Reservation />
 		{/if}
 	</MediaQuery>
