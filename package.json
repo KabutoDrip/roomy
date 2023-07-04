@@ -15,8 +15,11 @@
 		"eslint-config-airbnb-base": "^15.0.0",
 		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-svelte": "^2.32.2",
+		"node-sass": "^9.0.0",
+		"prettier-plugin-svelte": "^2.10.1",
 		"sass": "^1.63.6",
 		"svelte": "^3.54.0",
+		"svelte-preprocess": "^5.0.4",
 		"vite": "^4.3.0"
 	},
 	"type": "module",

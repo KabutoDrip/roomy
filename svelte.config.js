@@ -1,13 +1,20 @@
+import sveltePreprocess from 'svelte-preprocess';
 import adapter from '@sveltejs/adapter-auto';
 
-/** @type {import('@sveltejs/kit').Config} */
 const config = {
-	kit: {
-		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
-		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
-		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
-		adapter: adapter()
-	}
+  kit: {
+    adapter: adapter(),
+  },
 };
 
-export default config;
+const preprocessOptions = {
+  scss: {
+    prependData: `@use 'sass:math'; @use 'sass:map'; @use 'sass:meta'; @use 'sass:string'; @use 'sass:color'; @use './static/scss/_variables.scss' as *;`,
+    includePaths: ['src'],
+  },
+};
+
+export default {
+  ...config,
+  preprocess: sveltePreprocess(preprocessOptions),
+};
