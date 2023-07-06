@@ -11,6 +11,7 @@ function sendResverationData() {
     postCalenderData(data);
 }
 </script>
+
 <h1>Reservation</h1>
 
 <form class="reservationForm" on:submit|preventDefault={sendResverationData}>
@@ -23,5 +24,9 @@ function sendResverationData() {
     <label for="details">Add any details:</label>
     <textarea name="details" id="details" cols="30" rows="10"></textarea>
     <button type="submit">Save</button>
-</form>
 
+<style lang="scss">
+  .reservationForm {
+    flex: 1;
+  }
+</style>
