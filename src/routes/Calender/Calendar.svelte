@@ -101,6 +101,8 @@
           position: relative;
           z-index: 2;
         }
+      }
+      td {
         &::before {
           content: "";
           position: absolute;
