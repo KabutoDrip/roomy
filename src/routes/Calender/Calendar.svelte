@@ -47,7 +47,7 @@
   }
 </script>
 
-<main>
+<section class="calmain">
   <div class="calendarHeader">
     <button on:click={() => updateMonth(-1)} class="left-arrow">&#8249;</button>
     <h1>{monthString}</h1>
@@ -57,13 +57,13 @@
   <table class="calendar">
     <thead>
       <tr>
-        <th>Sun</th>
-        <th>Mon</th>
-        <th>Tue</th>
-        <th>Wed</th>
-        <th>Thu</th>
-        <th>Fri</th>
-        <th>Sat</th>
+        <th><span>Sun</span></th>
+        <th><span>Mon</span></th>
+        <th><span>Tue</span></th>
+        <th><span>Wed</span></th>
+        <th><span>Thu</span></th>
+        <th><span>Fri</span></th>
+        <th><span>Sat</span></th>
       </tr>
     </thead>
     <tbody>
@@ -76,64 +76,82 @@
       {/each}
     </tbody>
   </table>
-</main>
+</section>
+
 <style lang="scss">
   * {
     background-color: $background-color;
-    .calendar {
-      margin: auto;
-      text-align: center;
+  }
+  .calendar {
+    margin: auto;
+    text-align: center;
 
+    th,
+    td {
+      padding: 40px;
+      font-size: 30px;
+      position: relative;
+      &:hover {
+        height: auto;
+        transition: 0.3s;
+      }
+      span {
+        background-color: transparent;
+        position: relative;
+        z-index: 2;
+      }
+    }
+    td {
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #efb7b7;
+        opacity: 0;
+        z-index: 1;
+        transition: opacity 0.3s;
+      }
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  .calendarHeader {
+    display: flex;
+    margin: 10px 0 10px 0;
+  }
+
+  .left-arrow,
+  .right-arrow {
+    width: 30px;
+    border: none;
+    font-size: 30px;
+  }
+
+  h1 {
+    margin: 0;
+  }
+  .calmain {
+    flex: 0 0 60%;
+  }
+  @media screen and (max-width: 1024px) {
+    .calmain {
+      flex: 0 0 100%;
+    }
+    .calendar {
+      width: 100%;
+      table-layout: fixed;
       th,
       td {
-        padding: 40px;
-        font-size: 30px;
-        position: relative;
-        &:hover {
-          height: auto;
-          transition: 0.3s;
-        }
-        span {
-          background-color: transparent;
-          position: relative;
-          z-index: 2;
-        }
+        padding: 5vw;
+        font-size: 4svw;
       }
-      td {
-        &::before {
-          content: "";
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          background-color: #efb7b7;
-          opacity: 0;
-          z-index: 1;
-          transition: opacity 0.3s;
-        }
-        &:hover::before {
-          opacity: 1;
-        }
-      }
-    }
-
-    .calendarHeader {
-      display: flex;
-      margin: 10px 0 10px 0;
-    }
-
-    .left-arrow,
-    .right-arrow {
-      width: 30px;
-      border: none;
-      font-size: 30px;
-    }
-
-    h1 {
-      margin: 0;
     }
   }
 </style>
