@@ -53,3 +53,10 @@ return profiles;
 
 
 }
+
+export async function postCalenderData(data) {
+    const { data, error } = await supabase
+    .from('Calender')
+    .insert([data,])
+    .select()
+}
