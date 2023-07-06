@@ -6,7 +6,6 @@
     month: "long",
   });
   let calendar = [];
-
   onMount(() => {
     generateCalendar();
   });
@@ -78,11 +77,9 @@
     </tbody>
   </table>
 </main>
-
 <style lang="scss">
   * {
     background-color: $background-color;
-
     .calendar {
       margin: auto;
       text-align: center;
