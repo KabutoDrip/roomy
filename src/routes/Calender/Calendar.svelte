@@ -84,6 +84,7 @@
 <style lang="scss">
   * {
     background-color: $background-color;
+    color: $text-color;
   }
   .calendar {
     margin: auto;
@@ -114,7 +115,7 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background-color: #efb7b7;
+        background-color: $secondary-color;
         opacity: 0;
         z-index: 1;
         transition: opacity 0.3s;
