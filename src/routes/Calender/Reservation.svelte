@@ -1,5 +1,6 @@
 <script>
   import { postCalenderData } from "../../js/supabaseClient.mjs";
+  //formats the form data into the data variable and passes that into the function that populates the calendar table.
   function sendResverationData() {
     let form = document.querySelector(".reservationForm");
     let title = form.elements["title"].value;
@@ -14,6 +15,7 @@
 
 <section class="resmain">
   <section class="reservationList">
+    <!--List of events stored for the currently viewed calendar-->
     <li class="reservation-list">
       <ul>Sample Event</ul>
       <ul>Sample Event</ul>

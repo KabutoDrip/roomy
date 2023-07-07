@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-
+  //gets the month as both a number 1-12 and as a string
   let monthNum = new Date().getMonth() + 1;
   let monthString = new Date(0, monthNum - 1).toLocaleString("default", {
     month: "long",
@@ -9,7 +9,7 @@
   onMount(() => {
     generateCalendar();
   });
-
+  //function rerenders the calendar based off the newly generated month values.
   function updateMonth(modifier) {
     monthNum += modifier;
     monthString = new Date(0, monthNum - 1).toLocaleString("default", {
@@ -21,6 +21,7 @@
   }
 
   function generateCalendar() {
+    //generates the calendar by finding the first weekday of the month as well as the length of the month.
     calendar = [];
 
     const firstDay = new Date(2023, monthNum - 1, 1).getDay();
@@ -31,17 +32,17 @@
 
     while (currentDay <= totalDays) {
       let week = [];
-
+      //if the month is empty begin calculations for how many filler days before the first day of the month.
       if (calendar.length === 0) {
         for (let i = 0; i < firstDay; i++) {
           week.push("");
         }
       }
-
+      //adds each day of the month to the week array
       for (let i = week.length; i < 7 && currentDay <= totalDays; i++) {
         week.push(currentDay++);
       }
-
+      //pushes each week array to the calendar as objects incrementally until a full month has been generated.
       calendar.push({ weekNumber: currentWeek++, days: week });
     }
   }
@@ -49,6 +50,7 @@
 
 <section class="calmain">
   <div class="calendarHeader">
+    <!--buttons modify the numerical and string month values-->
     <button on:click={() => updateMonth(-1)} class="left-arrow">&#8249;</button>
     <h1>{monthString}</h1>
     <button on:click={() => updateMonth(1)} class="right-arrow">&#8250;</button>
@@ -67,6 +69,7 @@
       </tr>
     </thead>
     <tbody>
+      <!-- Generates the table body to be structured as a calendar-->
       {#each calendar as { weekNumber, days }}
         <tr key={weekNumber}>
           {#each days as day}

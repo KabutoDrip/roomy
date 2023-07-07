@@ -8,9 +8,7 @@
   <title>Calender</title>
   <meta name="description" content="About this app" />
 </svelte:head>
-<!--Default select  current date-->
-<!--User selects a calendar day to change the displayed reservation on the right of the screen in desktop-->
-<!--when user selects a date in mobile the reservatino screen takes over the whole screen with a button to go back-->
+<!--Svelte Media Queries to display components in different manners depending on device size-->
 <div class="calendar-page">
   <MediaQuery query="(max-width: 1024px)" let:matches>
     {#if matches}
