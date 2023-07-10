@@ -67,7 +67,7 @@
   }
 
   button {
-    color: $background-color;
+    background-color: $background-color;
     border: none;
     border-radius: 3px;
   }
