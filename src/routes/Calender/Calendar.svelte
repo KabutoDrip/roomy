@@ -45,6 +45,10 @@
       //pushes each week array to the calendar as objects incrementally until a full month has been generated.
       calendar.push({ weekNumber: currentWeek++, days: week });
     }
+
+    function displayForm() {
+      
+    }
   }
 </script>
 
@@ -73,7 +77,7 @@
       {#each calendar as { weekNumber, days }}
         <tr key={weekNumber}>
           {#each days as day}
-            <td><span>{day}</span></td>
+            <td><span on:click={displayForm}>{day}</span></td>
           {/each}
         </tr>
       {/each}
