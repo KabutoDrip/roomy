@@ -46,10 +46,12 @@
       calendar.push({ weekNumber: currentWeek++, days: week });
     }
 
-    function displayForm() {
+    
+  }
+  function displayForm() {
+      console.log('form');
       //This is gonna display the form and send the month and day to the form as well
     }
-  }
 </script>
 
 <section class="calmain">
@@ -78,8 +80,10 @@
         <tr key={weekNumber}>
           {#each days as day}
             <!--Added the click event here-->
-            <td><span on:click={displayForm}>{day}</span></td>
-          {/each}
+            <td on:click={displayForm} on:keydown={displayForm}>
+              <span>{day}</span>
+            </td>
+            {/each}
         </tr>
       {/each}
     </tbody>
