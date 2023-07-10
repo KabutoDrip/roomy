@@ -47,7 +47,7 @@
     }
 
     function displayForm() {
-      
+      //This is gonna display the form and send the month and day to the form as well
     }
   }
 </script>
@@ -77,6 +77,7 @@
       {#each calendar as { weekNumber, days }}
         <tr key={weekNumber}>
           {#each days as day}
+            <!--Added the click event here-->
             <td><span on:click={displayForm}>{day}</span></td>
           {/each}
         </tr>
