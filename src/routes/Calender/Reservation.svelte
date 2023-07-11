@@ -1,8 +1,9 @@
 <script>
   import { postCalendarData } from "../../js/supabaseClient.mjs";
+  import { getCalendarData } from "../../js/supabaseClient.mjs";
   import { calendarInfo } from "../../js/stores.mjs";
   import { onDestroy } from "svelte";
-  import { getCalendarData } from "../../js/supabaseClient.mjs";
+  import { userStore } from "../../js/stores.mjs";
   import { onMount } from "svelte";
   //formats the form data into the data variable and passes that into the function that populates the calendar table.
   let getData = []; //this is the list
@@ -16,19 +17,29 @@
     let month = showData.month;
     let day = showData.day;
     let data = { title, start_time, end_time, details, month, day };
-
-    postCalendarData(data);
-    onCall();
-    calendarInfo.set({ show: false, month: 0, day: 0 });
+    if(userData.isLoggedIn) {
+      postCalendarData(data, userData.user.id);
+      onCall();
+      calendarInfo.set({ show: false, month: 0, day: 0 });
+    }
   }
-  let showData = {};
+  
   onMount(() => {
     onCall();
   });
+  let showData = {};
 
   const unsubscribe = calendarInfo.subscribe((value) => (showData = value));
   let events = [];
   onDestroy(unsubscribe);
+
+  let userData = {};
+  
+  const unsubscribeTwo = userStore.subscribe((value) => (userData = value));
+
+  onDestroy(unsubscribeTwo);
+
+  console.log(userData)
 
   async function onCall() {
     events = await getCalendarData();
