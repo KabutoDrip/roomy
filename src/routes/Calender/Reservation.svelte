@@ -1,11 +1,11 @@
 <script>
   import { postCalendarData } from "../../js/supabaseClient.mjs";
   import { calendarInfo } from "../../js/stores.mjs";
-    import { onDestroy } from "svelte";
-  import { getCalendarData } from '../../js/supabaseClient.mjs'
+  import { onDestroy } from "svelte";
+  import { getCalendarData } from "../../js/supabaseClient.mjs";
   import { onMount } from "svelte";
   //formats the form data into the data variable and passes that into the function that populates the calendar table.
-  let events = ["1", "2"]; //this is the list
+  let getData = []; //this is the list
 
   function sendResverationData() {
     let form = document.querySelector(".reservationForm");
@@ -18,23 +18,21 @@
     let data = { title, start_time, end_time, details, month, day };
 
     postCalendarData(data);
-
+    onCall();
     calendarInfo.set({ show: false, month: 0, day: 0 });
   }
   let showData = {};
   onMount(() => {
-    onCall()
+    onCall();
   });
 
-
   const unsubscribe = calendarInfo.subscribe((value) => (showData = value));
-
 
   onDestroy(unsubscribe);
 
   async function onCall() {
-    let getData = await getCalendarData()
-  console.log(getData)
+    getData = await getCalendarData();
+    console.log(getData);
   }
 </script>
 
@@ -42,7 +40,7 @@
   <section class="reservationList">
     <!--List of events stored for the currently viewed calendar-->
     <li class="reservation-list">
-      {#each events as event}
+      {#each getData as event}
         <ul>{event}</ul>
       {/each}
     </li>
