@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { calendarInfo } from "../../js/stores.mjs";
   //gets the month as both a number 1-12 and as a string
   let monthNum = new Date().getMonth() + 1;
   let monthString = new Date(0, monthNum - 1).toLocaleString("default", {
@@ -9,6 +10,7 @@
   onMount(() => {
     generateCalendar();
   });
+
   //function rerenders the calendar based off the newly generated month values.
   function updateMonth(modifier) {
     monthNum += modifier;
@@ -45,7 +47,12 @@
       //pushes each week array to the calendar as objects incrementally until a full month has been generated.
       calendar.push({ weekNumber: currentWeek++, days: week });
     }
+
+    
   }
+  function displayForm(e) {
+    calendarInfo.set({show: true, month: monthNum, day: parseInt(e.target.textContent)})
+    }
 </script>
 
 <section class="calmain">
@@ -73,8 +80,11 @@
       {#each calendar as { weekNumber, days }}
         <tr key={weekNumber}>
           {#each days as day}
-            <td><span>{day}</span></td>
-          {/each}
+            <!--Added the click event here-->
+            <td on:click={displayForm} on:keydown={displayForm}>
+              <span>{day}</span>
+            </td>
+            {/each}
         </tr>
       {/each}
     </tbody>
