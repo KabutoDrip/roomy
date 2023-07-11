@@ -3,6 +3,8 @@
   import { calendarInfo } from "../../js/stores.mjs";
   import { onDestroy } from "svelte";
   //formats the form data into the data variable and passes that into the function that populates the calendar table.
+  let events = ["1", "2"]; //this is the list
+
   function sendResverationData() {
     let form = document.querySelector(".reservationForm");
     let title = form.elements["title"].value;
@@ -12,7 +14,6 @@
     let month = showData.month;
     let day = showData.day;
     let data = { title, start_time, end_time, details, month, day };
-    let events = []; //this is the list
 
     postCalenderData(data);
 
