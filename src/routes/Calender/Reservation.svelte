@@ -27,23 +27,27 @@
   });
 
   const unsubscribe = calendarInfo.subscribe((value) => (showData = value));
-
+  let events = [];
   onDestroy(unsubscribe);
 
   async function onCall() {
-    getData = await getCalendarData();
-    console.log(getData);
+    events = await getCalendarData();
+    console.log(events);
+
+    // events = getData.map((event) => {
+    //   return { id: event.id, calendar_data: event.data };
+    // });
   }
 </script>
 
 <section class="resmain">
   <section class="reservationList">
     <!--List of events stored for the currently viewed calendar-->
-    <li class="reservation-list">
-      {#each getData as event}
-        <ul>{event}</ul>
+    <ul class="reservation-list">
+      {#each events as event}
+        <li>{event.calendar_data.title}</li>
       {/each}
-    </li>
+    </ul>
   </section>
   {#if showData.show}
     <form
