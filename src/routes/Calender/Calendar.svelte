@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { calendarInfo } from "../../js/stores.mjs";
   //gets the month as both a number 1-12 and as a string
   let monthNum = new Date().getMonth() + 1;
   let monthString = new Date(0, monthNum - 1).toLocaleString("default", {
@@ -9,6 +10,7 @@
   onMount(() => {
     generateCalendar();
   });
+
   //function rerenders the calendar based off the newly generated month values.
   function updateMonth(modifier) {
     monthNum += modifier;
@@ -48,9 +50,8 @@
 
     
   }
-  function displayForm() {
-      console.log('form');
-      //This is gonna display the form and send the month and day to the form as well
+  function displayForm(e) {
+    calendarInfo.set({show: true, month: monthNum, day: parseInt(e.target.textContent)})
     }
 </script>
 
