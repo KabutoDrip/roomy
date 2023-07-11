@@ -22,7 +22,6 @@
   }
   let showData = {};
 
-  const unsubscribe = calendarInfo.subscribe((value) => showData = value);
 
   let getData = await getCalendarData()
   console.log(getData)
