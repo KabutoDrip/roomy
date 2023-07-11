@@ -10,6 +10,7 @@
     let data = { title, start_time, end_time, details };
 
     postCalenderData(data);
+    let events = []; //this is the list
   }
 </script>
 
@@ -17,11 +18,9 @@
   <section class="reservationList">
     <!--List of events stored for the currently viewed calendar-->
     <li class="reservation-list">
-      <ul>Sample Event</ul>
-      <ul>Sample Event</ul>
-      <ul>Sample Event</ul>
-      <ul>Sample Event</ul>
-      <ul>Sample Event</ul>
+      {#each events as event}
+        <ul>{event}</ul>
+      {/each}
     </li>
   </section>
 
