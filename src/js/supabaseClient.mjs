@@ -51,11 +51,11 @@ export async function getUserProfile(userId) {
   return profiles;
 }
 
-export async function postCalendarData(obj) {
+export async function postCalendarData(obj, id) {
   const { data, error } = await supabase
 
     .from("calendar")
-    .insert({ calendar_data: obj });
+    .insert({ calendar_data: obj, user_id: id });
 
   console.log(data);
   console.log(error);
