@@ -1,7 +1,8 @@
 <script>
-  import { postCalenderData } from "../../js/supabaseClient.mjs";
+  import { postCalendarData } from "../../js/supabaseClient.mjs";
   import { calendarInfo } from "../../js/stores.mjs";
     import { onDestroy } from "svelte";
+  import { getCalendarData } from '../../js/supabaseClient.mjs'
   //formats the form data into the data variable and passes that into the function that populates the calendar table.
   function sendResverationData() {
     let form = document.querySelector(".reservationForm");
@@ -13,13 +14,15 @@
     let day = showData.day;
     let data = { title, start_time, end_time, details, month, day};
 
-    postCalenderData(data);
+    postCalendarData(data);
 
     calendarInfo.set({show: false, month: 0, day: 0});
   }
   let showData = {};
   const unsubscribe = calendarInfo.subscribe((value) => showData = value);
 
+  let getData = await getCalendarData()
+  console.log(getData)
 
   onDestroy(unsubscribe)
 </script>
