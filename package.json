@@ -25,6 +25,7 @@
 	"type": "module",
 	"dependencies": {
 		"@supabase/supabase-js": "^2.26.0",
-		"firebase": "^9.22.2"
+		"firebase": "^9.22.2",
+		"prettier": "^1.16.4"
 	}
 }
