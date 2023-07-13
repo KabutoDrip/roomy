@@ -17,13 +17,13 @@
     let month = showData.month;
     let day = showData.day;
     let data = { title, start_time, end_time, details, month, day };
-    if(userData.isLoggedIn) {
+    if (userData.isLoggedIn) {
       postCalendarData(data, userData.user.id);
       onCall();
       calendarInfo.set({ show: false, month: 0, day: 0 });
     }
   }
-  
+
   onMount(() => {
     onCall();
   });
@@ -34,12 +34,12 @@
   onDestroy(unsubscribe);
 
   let userData = {};
-  
+
   const unsubscribeTwo = userStore.subscribe((value) => (userData = value));
 
   onDestroy(unsubscribeTwo);
 
-  console.log(userData)
+  console.log(userData);
 
   async function onCall() {
     events = await getCalendarData();
@@ -56,7 +56,14 @@
     <!--List of events stored for the currently viewed calendar-->
     <ul class="reservation-list">
       {#each events as event}
-        <li>{event.calendar_data.title}</li>
+        <li>
+          <div class="card">
+            <h1 class="card-title">{event.calendar_data.title}</h1>
+            <h3 class="card-time">
+              {event.calendar_data.start_time} - {event.calendar_data.end_time}
+            </h3>
+          </div>
+        </li>
       {/each}
     </ul>
   </section>
@@ -110,5 +117,26 @@
     background-color: $background-color;
     border: none;
     border-radius: 3px;
+  }
+  .card {
+    color: $background-color;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: $text-color;
+    display: flex;
+  }
+
+  .card-title {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 5px;
+  }
+
+  .card-time {
+    padding-left: 20px;
+    font-size: 25px;
+    margin: 0;
   }
 </style>

@@ -7,6 +7,7 @@
 <svelte:head>
   <title>Calender</title>
   <meta name="description" content="About this app" />
+  <link rel="icon" href="../img/cal.ico" type="image/x-icon" />
 </svelte:head>
 <!--Svelte Media Queries to display components in different manners depending on device size-->
 <div class="calendar-page">
