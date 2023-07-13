@@ -68,16 +68,6 @@
     flex: 0.6;
   }
 
-  .back-to-top {
-    cursor: pointer;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display:none;
-    border-radius: 0;
-    opacity: 0.75;
-}
-
 .header{
 	height: 100vh;
     width: 100%;
@@ -92,9 +82,7 @@
 	display: inline-block;
 	padding: 0px;
 }
-a#logo:hover{
-	text-decoration: none;
-}
+
 .strong{
 	font-weight: 400;
 }
@@ -102,20 +90,8 @@ a#logo:hover{
 	width: 100%;
 }
 
-.customNavigation {
-    text-align:center;
-}
-
 .banner-text{
     margin-top: 100px;
-}
-
-h1{
-	font-weight: 100;
-	font-size: 40px;
-	text-transform: uppercase;
-	color: #fff;
-	letter-spacing: 10px;
 }
  h2{
 	font-weight: 100;
