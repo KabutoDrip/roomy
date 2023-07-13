@@ -21,6 +21,8 @@
       postCalendarData(data, userData.user.id);
       onCall();
       calendarInfo.set({ show: false, month: 0, day: 0 });
+    } else {
+      location.assign('http://localhost:5173/Login');
     }
   }
 
