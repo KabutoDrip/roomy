@@ -52,6 +52,9 @@
 </section>
 
 <style lang="scss">
+  li {
+    list-style: none;
+  }
   section {
     display: flex;
     flex-direction: column;
