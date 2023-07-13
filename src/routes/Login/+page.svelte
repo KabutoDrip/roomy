@@ -130,7 +130,7 @@
     display: block;
     height: 50px;
     width: 100%;
-    background-color: $accent-color;
+    background-color: $background-color;
     border: none;
     border-radius: 3px;
     padding: 0 10px;
